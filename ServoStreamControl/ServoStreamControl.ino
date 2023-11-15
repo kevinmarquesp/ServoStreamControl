@@ -1,4 +1,6 @@
-#include "src/user/include/SayHello.h"
+#include <ParallelServo.h>
+
+String readUserStringFromSerialInput(void);
 
 void setup(void)
 {
@@ -7,5 +9,12 @@ void setup(void)
 
 void loop(void)
 {
-    sayHello();
+    if (!Serial.available())
+        return;
+
+    String userInput = readUserStringFromSerialInput();
+    Serial.println(userInput);
+
+    // todo: make the command pallet verification
+    // todo: the first command shoud be the one to fill up the MainServosData variable
 }
