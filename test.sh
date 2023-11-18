@@ -2,9 +2,7 @@
 
 # todo: describe what this script does...
 
-SKETCH_NAME="ServoStreamControl"
-
-while inotifywait -e modify -r "./$SKETCH_NAME/src" ; do
+while inotifywait -e modify -r "./module" "./tests" ; do
     echo "[$0] waiting some time before running the command..."
     sleep 15
 

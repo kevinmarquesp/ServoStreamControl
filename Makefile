@@ -5,6 +5,9 @@ TESTS_DIR ?= tests
 AUNITER_BIN ?= ${HOME}/.local/share/AUniter/auniter.sh
 ARDUINO_CLI_BIN ?= ${HOME}/.local/bin/arduino-cli
 
+ARDUINO_CLI_MODULE_FLAGS ?= --library module/abstract \
+							--library module/commands
+
 ARDUINO_CLI_LIB_FLAGS ?= --library vendor/ParallelServo \
 						 --library vendor/StringSplitter
 
@@ -21,5 +24,5 @@ upload:
 	$(ARDUINO_CLI_BIN) compile $(ARDUINO_CLI_LIB_FLAGS) --upload --fqbn $(BOARD_LONG) --port $(PORT) $(SKETCH_NAME)
 
 test:
-	AUNITER_ARDUINO_CLI="$(ARDUINO_CLI_BIN) $(ARDUINO_CLI_LIB_FLAGS) --library $(SKETCH_NAME)/src/**/*" \
+	AUNITER_ARDUINO_CLI="$(ARDUINO_CLI_BIN) $(ARDUINO_CLI_LIB_FLAGS) $(ARDUINO_CLI_MODULE_FLAGS)" \
 		$(AUNITER_BIN) --cli test $(BOARD_SHORT):$(PORT) $(TESTS_DIR)/*
