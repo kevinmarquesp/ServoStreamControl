@@ -33,11 +33,7 @@ public:
         if (this->_arg.length() < 1)
             return {false, "invalid argument length, it should be a non empty string"};
 
-        const String pongString = String("(pong) ") + this->_arg;
-        char pongCharArr[pongString.length() + 1];
-
-        pongString.toCharArray(pongCharArr, sizeof(pongCharArr));
-
-        return {true, pongCharArr};
+        const String pongString = String("[pong] ") + this->_arg;
+        return {true, pongString};
     }
 };
