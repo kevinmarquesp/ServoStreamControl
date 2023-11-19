@@ -10,8 +10,8 @@ inline String readUserStringFromSerialInput(void)
     while (!Serial.available())
     {}
 
-    const String userInput = Serial.readStringUntil('\n');
-    userInput.replace(" ", "");  // spaces is unecessary for the rest of the program logic
+    const String userInputString = Serial.readStringUntil('\n');
+    userInputString.replace(" ", "");  // spaces is unecessary for the rest of the program logic
 
-    return userInput;
+    return userInputString;
 }

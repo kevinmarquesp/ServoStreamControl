@@ -16,21 +16,22 @@ void setup(void)
 
 void loop(void)
 {
-    String userInput = readUserStringFromSerialInput();
+    String userInputString = readUserStringFromSerialInput();
 
-    if (!isThisStringAValidCommandString(userInput))
+    if (!isThisStringAValidCommandString(userInputString))
     {
-        userInput.concat(" is not an available command string");
-        logWhenStatusError(userInput);
+        userInputString.concat(" is not an available command string");
+        logWhenStatusError(userInputString);
+
         return;
     }
 
-    String cmd, arg;
-    userInput = userInput.substring(1);  // remove the '$' character at the begining of the string
+    String commandPrefix, commandArguments;
+    userInputString = userInputString.substring(1);  // remove the '$' character at the begining of the string
 
-    spliCommandtStringIntoTwoArguments(userInput, cmd, arg);
+    spliCommandtStringIntoTwoArguments(userInputString, commandPrefix, commandArguments);
 
-    BaseCommand* command = commandFactory(cmd, arg);
+    BaseCommand* command = commandFactory(commandPrefix, commandArguments);
     CmdOutput_t commandOutput = command->exec();
 
     if (commandOutput.isStatusOk)

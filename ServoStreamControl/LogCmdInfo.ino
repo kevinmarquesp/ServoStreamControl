@@ -4,10 +4,10 @@
  * at the begining.
  *  @param const String msg: Error info, string with the details of the error
  */
-inline void logWhenStatusError(const String msg)
+inline void logWhenStatusError(const String message)
 {
     Serial.print("err : ");
-    Serial.println(msg);
+    Serial.println(message);
 }
 
 /**
@@ -16,8 +16,8 @@ inline void logWhenStatusError(const String msg)
  * indicator at the begining.
  *  @param const String msg: Output info, string that sumarize the behavior of the command
  */
-inline void logWhenStatusOk(const String msg)
+inline void logWhenStatusOk(const String message)
 {
     Serial.print(" ok : ");
-    Serial.println(msg);
+    Serial.println(message);
 }

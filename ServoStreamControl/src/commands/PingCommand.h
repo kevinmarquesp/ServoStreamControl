@@ -13,10 +13,10 @@
 class PingCommand : public BaseCommand
 {
 private:
-    String _arg;
+    String _argument;
 
 public:
-    PingCommand(const String arg) : _arg(arg) {}
+    PingCommand(const String argument) : _argument(argument) {}
 
     inline virtual uint8_t getID(void) override
     {
@@ -30,10 +30,9 @@ public:
      */
     virtual CmdOutput_t exec(void) override
     {
-        if (this->_arg.length() < 1)
+        if (_argument.length() < 1)
             return {false, "invalid argument length, it should be a non empty string"};
 
-        const String pongString = String("[pong] ") + this->_arg;
-        return {true, pongString};
+        return {true, String("[pong] ") + _argument};
     }
 };
