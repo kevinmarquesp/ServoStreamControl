@@ -3,6 +3,7 @@
 #include <Arduino.h>
 #include "../shell/BaseCommand.h"
 #include "../shell/CmdOutput_t.h"
+#include "../shell/AvailableCommands.h"
 
 /**
  * it's just a test to see if the serial comunication is working just fine., and
@@ -16,6 +17,11 @@ private:
 
 public:
     PingCommand(const String arg) : _arg(arg) {}
+
+    inline virtual uint8_t getID(void) override
+    {
+        return AvailableCommands.PING_COMMAND;
+    }
 
     /**
      * This function just get the argument string and concatenates with a

@@ -2,6 +2,7 @@
 
 #include <Arduino.h> 
 #include "./CmdOutput_t.h"
+#include "./AvailableCommands.h"
 
 /**
  * Base class that will be extended to form all the other available commands of
@@ -14,6 +15,16 @@ class BaseCommand
 {
 public:
     virtual ~BaseCommand() {}
+
+    /**
+     * Each class instance should have this method, it will allow the user to
+     * verify if the class that was given to him was the expected one.
+     *  @returns uint8_t: A number that is based on the AvailableCommands enum
+     */
+    inline virtual uint8_t getID(void)
+    {
+        return AvailableCommands.BASE_COMMAND;
+    }
 
     /**
      * This method should execute some taks and return what it did and if
