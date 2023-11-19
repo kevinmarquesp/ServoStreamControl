@@ -7,7 +7,10 @@
  */
 inline String readUserStringFromSerialInput(void)
 {
-    const String userInput = Serial.readStringUntil("\n");
+    while (!Serial.available())
+    {}
+
+    const String userInput = Serial.readStringUntil('\n');
     userInput.replace(" ", "");  // spaces is unecessary for the rest of the program logic
 
     return userInput;
