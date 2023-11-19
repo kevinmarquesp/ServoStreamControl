@@ -9,10 +9,10 @@
  * information; It is a good practice to always describe what did wrong or what
  * the method have done.
  *  @attr const bool   isStatusOk: Boolean value that says if the function went wrong or not
- *  @attr const ichar* info:       Aditional information that describes the execution of the function
+ *  @attr const String info:       Aditional information that describes the execution of the function
  */
 typedef struct CmdOutput_t
 {
     const bool isStatusOk;
-    const char* info;
+    const String info;
 } CmdOutput_t;
