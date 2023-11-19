@@ -4,7 +4,7 @@
 #include "./shell/BaseCommand.h"
 #include "./commands/PingCommand.h"
 
-inline BaseCommand* commandFactory(const String& commandPrefix, const String& commandArguments)
+inline BaseCommand* getCommandFromFractory(const String& commandPrefix, const String& commandArguments)
 {
     if (commandPrefix.equals("ping"))
         return new PingCommand(commandArguments);
