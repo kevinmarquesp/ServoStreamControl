@@ -12,7 +12,7 @@ private:
 public:
     PingCommand(const String arg) : _arg(arg) {}
 
-    virtual CmdOutput_t execute(void) override
+    virtual CmdOutput_t exec(void) override
     {
         if (this->_arg.length() < 1)
             return {false, "invalid argument length, it should be a non empty string"};

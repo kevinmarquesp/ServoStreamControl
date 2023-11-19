@@ -8,7 +8,7 @@ class BaseCommand
 public:
     virtual ~BaseCommand() {}
 
-    inline virtual CmdOutput_t execute(void)
+    inline virtual CmdOutput_t exec(void)
     {
         return {false, "execute() method was not implemented for this class"};
     }
