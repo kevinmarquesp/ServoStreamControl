@@ -2,7 +2,7 @@
 
 #include <Arduino.h>
 #include "./shell/BaseCommand.h"
-#include "../commands/PingCommand.h"
+#include "./commands/PingCommand.h"
 
 /**
  * Factory that will return the correspondent command class object (a pointer

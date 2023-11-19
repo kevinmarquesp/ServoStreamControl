@@ -2,7 +2,7 @@
 
 #include <Arduino.h> 
 #include "./CmdOutput_t.h"
-#include "./AvailableCommands.h"
+#include "./CommandsIDs.h"
 
 /**
  * Base class that will be extended to form all the other available commands of
@@ -23,7 +23,7 @@ public:
      */
     inline virtual uint8_t getID(void)
     {
-        return AvailableCommands.BASE_COMMAND;
+        return CommandsIDs::BASE_COMMAND_ID;
     }
 
     /**

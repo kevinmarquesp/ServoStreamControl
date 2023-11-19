@@ -7,8 +7,8 @@
  * used to check if the given command was the expected one - mainly on the test
  * cases.
  */
-enum AvailableCommands
+enum CommandsIDs
 {
-    BASE_COMMAND,
-    PING_COMMAND,
+    BASE_COMMAND_ID,
+    PING_COMMAND_ID,
 };

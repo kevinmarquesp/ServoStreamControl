@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include "../shell/BaseCommand.h"
 #include "../shell/CmdOutput_t.h"
-#include "../shell/AvailableCommands.h"
+#include "../shell/CommandsIDs.h"
 
 /**
  * it's just a test to see if the serial comunication is working just fine., and
@@ -20,7 +20,7 @@ public:
 
     inline virtual uint8_t getID(void) override
     {
-        return AvailableCommands.PING_COMMAND;
+        return CommandsIDs::PING_COMMAND_ID;
     }
 
     /**
@@ -33,8 +33,8 @@ public:
         if (this->_arg.length() < 1)
             return {false, "invalid argument length, it should be a non empty string"};
 
-        const String pongString = String("pong:") + this->_arg;
-        const char pongCharArr[pongString.length() + 1];
+        const String pongString = String("(pong) ") + this->_arg;
+        char pongCharArr[pongString.length() + 1];
 
         pongString.toCharArray(pongCharArr, sizeof(pongCharArr));
 
