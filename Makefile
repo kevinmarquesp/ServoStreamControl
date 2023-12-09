@@ -35,5 +35,5 @@ new-unit:
 	ff_selunit=$$(ls -1 $(TESTS_DIR) | $(FZF_BIN)); \
 		read -p "Unit name: " fr_unitname; \
 		unitfile=$(TESTS_DIR)/$$ff_selunit/$$fr_unitname.ino; \
-		touch $$unitfile; \
+		cat $(TEMPLATES_DIR)/UnitFile.ino > $$unitfile; \
 		code $$unitfile
