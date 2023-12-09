@@ -1,8 +1,10 @@
 SKETCH_NAME ?= ServoStreamControl
 TESTS_DIR ?= tests
+TEMPLATES_DIR ?= templates
 
 AUNITER_BIN ?= ${HOME}/.local/share/AUniter/auniter.sh
 ARDUINO_CLI_BIN ?= ${HOME}/.local/bin/arduino-cli
+FZF_BIN ?= /bin/fzf
 
 ARDUINO_CLI_LOCAL_MODULE_FLAGS ?= --library $(SKETCH_NAME)/src/shell \
 								  --library $(SKETCH_NAME)/src/commands \
@@ -23,3 +25,15 @@ upload:
 test:
 	AUNITER_ARDUINO_CLI="$(ARDUINO_CLI_BIN) $(ARDUINO_CLI_LIB_FLAGS) $(ARDUINO_CLI_LOCAL_MODULE_FLAGS)" \
 		$(AUNITER_BIN) --cli test $(BOARD_SHORT):$(PORT) $(TESTS_DIR)/*
+
+new-test:
+	read -p "Test name: " fr_testname; \
+		$(ARDUINO_CLI_BIN) sketch new $(TESTS_DIR)/$$fr_testname; \
+		cat $(TEMPLATES_DIR)/TestSketch.ino > $(TESTS_DIR)/$$fr_testname/$$fr_testname.ino
+
+new-unit:
+	ff_selunit=$$(ls -1 $(TESTS_DIR) | $(FZF_BIN)); \
+		read -p "Unit name: " fr_unitname; \
+		unitfile=$(TESTS_DIR)/$$ff_selunit/$$fr_unitname.ino; \
+		touch $$unitfile; \
+		code $$unitfile
