@@ -5,13 +5,14 @@
 
 inline bool isThisStringAValidCommandString(const String commandString)
 {
-    if (commandString.charAt(0) != '$')
+    if (commandString.charAt(0) != '$' || commandString.charAt(1) == ':' ||
+        commandString.indexOf(' ') != -1 || commandString.length() <= 1)
         return false;
 
     return true;
 }
 
-inline void spliCommandtStringIntoTwoArguments(const String commandString, String& ptrCommandPrefix, String& ptrCommandArguments)
+inline void splitCommandtStringIntoTwoArguments(const String commandString, String& ptrCommandPrefix, String& ptrCommandArguments)
 {
     StringSplitter* splitter = new StringSplitter(commandString, ':', 2);
 

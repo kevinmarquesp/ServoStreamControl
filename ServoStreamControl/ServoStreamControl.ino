@@ -1,9 +1,12 @@
 #include <ParallelServo.h>
 #include "src/stringUtilities.h"
-#include "src/commandFactory.h"
 #include "src/shell/BaseCommand.h"
 #include "src/shell/CmdOutput_t.h"
 
+ParallelServo* Servos;
+
+// As funções abaixo não estão em módulos separados, são arquivos .ino que
+// também estão localizados na raíz desse sketch (do lado desse arquivo aqui)
 String readUserStringFromSerialInput(void);
 void logWhenStatusError(const String msg);
 void logWhenStatusOk(const String msg);
@@ -20,16 +23,14 @@ void loop(void)
 
     if (!isThisStringAValidCommandString(userInputString))
     {
-        userInputString.concat(" is not an available command string");
-        logWhenStatusError(userInputString);
-
+        logWhenStatusError(userInputString + String(" is not an available command string"));
         return;
     }
 
-    String commandPrefix, commandArguments;
     userInputString = userInputString.substring(1);  // remove the '$' character at the begining of the string
 
-    spliCommandtStringIntoTwoArguments(userInputString, commandPrefix, commandArguments);
+    String commandPrefix, commandArguments;
+    splitCommandtStringIntoTwoArguments(userInputString, commandPrefix, commandArguments);
 
     BaseCommand* command = commandFactory(commandPrefix, commandArguments);
     CmdOutput_t commandOutput = command->exec();
