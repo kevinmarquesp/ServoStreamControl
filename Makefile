@@ -4,7 +4,11 @@ TEMPLATES_DIR ?= templates
 
 AUNITER_BIN ?= ${HOME}/.local/share/AUniter/auniter.sh
 ARDUINO_CLI_BIN ?= ${HOME}/.local/bin/arduino-cli
-FZF_BIN ?= /bin/fzf
+FZF_BIN ?= /bin/fzf \
+	--preview "test" \
+	--ansi --border sharp --margin 10% --padding 5% --info inline \
+	--prompt "   " --pointer "->" \
+	--color "bg+:-1,pointer:green,fg+:green,hl:yellow,border:gray"
 
 ARDUINO_CLI_LOCAL_MODULE_FLAGS ?= --library $(SKETCH_NAME)/src/shell \
 								  --library $(SKETCH_NAME)/src/commands \
@@ -23,6 +27,10 @@ upload:
 	$(ARDUINO_CLI_BIN) compile $(ARDUINO_CLI_LIB_FLAGS) --upload --fqbn $(BOARD_LONG) --port $(PORT) $(SKETCH_NAME)
 
 test:
+	AUNITER_ARDUINO_CLI="$(ARDUINO_CLI_BIN) $(ARDUINO_CLI_LIB_FLAGS) $(ARDUINO_CLI_LOCAL_MODULE_FLAGS)" \
+		$(AUNITER_BIN) --cli test $(BOARD_SHORT):$(PORT) $(TESTS_DIR)/$$(ls -1 $(TESTS_DIR) | $(FZF_BIN))
+
+test-all:
 	AUNITER_ARDUINO_CLI="$(ARDUINO_CLI_BIN) $(ARDUINO_CLI_LIB_FLAGS) $(ARDUINO_CLI_LOCAL_MODULE_FLAGS)" \
 		$(AUNITER_BIN) --cli test $(BOARD_SHORT):$(PORT) $(TESTS_DIR)/*
 
