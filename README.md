@@ -7,7 +7,7 @@
   with `arduino-cli` flags somehow, be aware of that...
 
 ### Todo list
-+ [x] ~~**Unit testing**: Test the functions inside the `src/stringUtilities.h` file~~
-+ [ ] **Unit testing**: Test if the `commandFactory()` function is returning the expected command class reference
 + [ ] **Feature**: Create a command to set the servos max/min positions and the ammount
++ [x] ~~**Unit testing**: Test the functions inside the `src/stringUtilities.h` file~~
++ [x] ~~**Unit testing**: Test if the `commandFactory()` function is returning the expected command class reference~~
 + [x] ~~**Development**: Create an script to easely create new test suits, based on a template file~~
