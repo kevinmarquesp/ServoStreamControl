@@ -15,5 +15,5 @@ while inotifywait -e modify -r "${SKETCH_MODULES}" "${TESTS_DIR}" ; do
     echo "[$0] waiting some time before running the command..."
     sleep 15
     clear
-    make test
+    make test-all
 done
