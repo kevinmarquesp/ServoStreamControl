@@ -44,4 +44,4 @@ new-unit:
 		read -p "Unit name: " fr_unitname; \
 		unitfile=$(TESTS_DIR)/$$ff_selunit/$$fr_unitname.ino; \
 		cat $(TEMPLATES_DIR)/UnitFile.ino > $$unitfile; \
-		code $$unitfile
+		echo $$unitfile
