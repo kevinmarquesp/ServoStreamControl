@@ -35,7 +35,7 @@ void loop(void)
     String commandPrefix, commandArguments;
     splitCommandtStringIntoTwoArguments(userInputString, commandPrefix, commandArguments);
 
-    BaseCommand* command = commandFactory(commandPrefix, commandArguments);
+    BaseCommand* command = getCommandFromFactory(commandPrefix, commandArguments);
     CmdOutput_t commandOutput = command->exec();
 
     if (commandOutput.isStatusOk)

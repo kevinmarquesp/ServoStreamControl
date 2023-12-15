@@ -6,4 +6,5 @@ enum CommandsIDs
 {
     BASE_COMMAND_ID,
     PING_COMMAND_ID,
+    ATTACH_COMMAND_ID,
 };
