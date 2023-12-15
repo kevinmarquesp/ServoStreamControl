@@ -18,7 +18,7 @@ public:
         return CommandsIDs::PING_COMMAND_ID;
     }
 
-    virtual CmdOutput_t exec(void) override
+    inline virtual CmdOutput_t exec(void) override
     {
         if (_argument.length() < 1)
             return {false, "invalid argument length, it should be a non empty string"};
