@@ -1,9 +1,10 @@
-#include <ParallelServo.h>
+#include "src/Servos_t.h"
 #include "src/stringUtilities.h"
+#include "src/getCommandFromFactory.h"
 #include "src/shell/BaseCommand.h"
 #include "src/shell/CmdOutput_t.h"
 
-ParallelServo* Servos;
+Servos_t Servos;
 
 // As funções abaixo não estão em módulos separados, são arquivos .ino que
 // também estão localizados na raíz desse sketch (do lado desse arquivo aqui)
@@ -15,6 +16,8 @@ void setup(void)
 {
     Serial.begin(9600);
     delay(1500);
+
+    Servos.size = 0;
 }
 
 void loop(void)
