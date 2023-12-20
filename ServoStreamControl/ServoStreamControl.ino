@@ -4,10 +4,13 @@
 #include "src/stringUtilities.h"
 #include "src/status_t.h"
 
+String readSerialInputString(void);
+void showInput(const String)
+void showError(const char*);
+
 LinkedList<ParallelServo> Servos;
 
 String userSerialInput;
-String cmdPrefix, cmdSufix;
 
 void setup(void) {
     Serial.begin(9600);
