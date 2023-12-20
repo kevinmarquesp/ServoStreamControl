@@ -18,9 +18,10 @@ void setup(void) {
 }
 
 void loop(void) {
-    /* userSerialInput = readSerialInputString();
+    userSerialInput = readSerialInputString();
+    Serial.println(userSerialInput);
 
-    if (!isCommand(userSerialInput)) {
+    /* if (!isCommand(userSerialInput)) {
         String errorMessage = userSerialInput + String(" is not a command...");
         printError(errorMessage);
 
