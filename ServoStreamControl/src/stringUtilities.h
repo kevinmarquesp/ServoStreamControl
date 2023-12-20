@@ -4,7 +4,7 @@
 #include "status_t.h"
 
 inline void cleanUpUserInputString_l(const String* userString) {
-    userString.replace(" ", "");
+    userString->replace(" ", "");
 }
 
 inline status_t validateCommandString(const String userCommandString) {
