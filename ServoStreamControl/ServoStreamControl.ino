@@ -15,9 +15,18 @@ CmdStatus_t choseAndExecute(const String cmdPrefix, const String cmdSufix); */
 void setup(void) {
     Serial.begin(9600);
     delay(1500);
+
+    typedef struct test_t {
+        char* message;
+    } test_t;
+
+    test_t test = {"Hello from a char* string!"};
+    Serial.println(test.message);
 }
 
 void loop(void) {
+    return;
+
     userSerialInput = readSerialInputString();
     Serial.println(userSerialInput);
 
