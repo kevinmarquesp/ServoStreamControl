@@ -1,11 +1,11 @@
 #include <LinkedList.h>
 #include <ParallelServo.h>
 
-String readSerialInputString(void);
-void showInput(const char*);
-void showInput(const String);
-void showError(const char*);
-void showError(const String);
+String userInteraction::readSerialInputString(void);
+void userDisplay::showInput(const char*);
+void userDisplay::showInput(const String);
+void userDisplay::showError(const char*);
+void userDisplay::showError(const String);
 
 LinkedList<ParallelServo> Servos;
 
@@ -17,10 +17,11 @@ void setup(void) {
 }
 
 void loop(void) {
-  userSerialInput = readSerialInputString();
+  userSerialInput = userInteraction::readSerialInputString();
 
   // ignores if the string is empty...
   if (userSerialInput.length() == 0)
     return;
-  showInput(userSerialInput);
+
+  userDisplay::showInput(userSerialInput);
 }
