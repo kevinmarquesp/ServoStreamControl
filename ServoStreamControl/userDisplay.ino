@@ -1,5 +1,5 @@
 inline void showInput(const char* input) {
-  showInput(String(input))
+  showInput(String(input));
 }
 
 inline void showInput(const String input) {
